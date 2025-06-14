@@ -6,6 +6,10 @@
     text-align: center;
     margin-top: 32px;
 
+    @media(min-width:319px) and (max-width:1048px) {
+        width: 90vw;
+    }
+
     h1 {
         color: white;
         font-size: 32px;
@@ -60,10 +64,16 @@
     height: 80vh;
 
 
+
     &__list {
         max-width: 1024px;
         width: 100%;
         margin: 0 auto;
+
+        @media(min-width:319px) and (max-width:1048px) {
+            width: 90vw;
+        }
+
 
         h2 {
             font-size: 32px;

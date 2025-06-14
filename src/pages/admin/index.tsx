@@ -2,8 +2,6 @@ import { MdDelete } from "react-icons/md";
 import { FaShare } from "react-icons/fa";
 
 
-
-
 import HeaderUser from '@/Components/HeaderUser'
 
 import styles from './styles.module.scss'
