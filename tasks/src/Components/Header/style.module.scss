@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    width: 100vw;
+    height: 105px;
+    justify-content: space-between;
+    align-items: center;
+
+    >p {
+        color: white;
+        font-size: 38px;
+        font-weight: bold;
+        padding-left: 128px;
+
+        span {
+            color: red;
+        }
+    }
+
+    &__saudation {
+        max-width: 960px;
+
+        p {
+            color: white;
+            font-size: 18px;
+            border: 1px solid white;
+            padding: 16px 40px;
+            border-radius: 50px;
+            margin-right: 128px;
+
+        }
+    }
+}
