@@ -12,7 +12,7 @@ export default function Home() {
             <Image
             src={logo}
             alt="logo da pagina home"
-            height={250}/>
+          />
 
             <div>
                <p>
