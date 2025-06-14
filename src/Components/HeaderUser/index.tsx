@@ -5,13 +5,15 @@ const HeaderUser = () => {
             <header className={styles.container}>
                 <div className={styles.container__logo}>
                     <div className={styles.container__logo__items}>
-                        <p>
-                            Tarefas <span>+</span>
-                        </p>
+                     
+                            <p>
+                                Tarefas <span>+</span>
+                            </p>
 
-                        <button>
-                            Meu painel
-                        </button>
+                            <button>
+                                Meu painel
+                            </button>
+                        
                     </div>
                 </div>
 
