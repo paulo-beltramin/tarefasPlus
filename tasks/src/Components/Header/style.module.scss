@@ -5,11 +5,25 @@
     justify-content: space-between;
     align-items: center;
 
+    @media(max-width:767px) {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto;
+
+    }
+
     >p {
         color: white;
         font-size: 38px;
         font-weight: bold;
         padding-left: 128px;
+
+        @media(max-width:767px) {
+            font-size: 24px;
+            width: 80vw;
+            padding-left: 40px;
+        }
 
         span {
             color: red;
@@ -17,7 +31,9 @@
     }
 
     &__saudation {
-        max-width: 960px;
+        @media(max-width:767px) {
+            width: 350px;
+        }
 
         p {
             color: white;
@@ -26,6 +42,13 @@
             padding: 16px 40px;
             border-radius: 50px;
             margin-right: 128px;
+
+            @media(max-width:767px) {
+                margin-right: 40px;
+                letter-spacing: 2px;
+                text-align: center;
+                padding: 8px 24px;
+            }
 
         }
     }
