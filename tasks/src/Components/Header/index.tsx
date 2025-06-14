@@ -9,7 +9,7 @@ const Header = () => {
 
         <div className={styles.container__saudation}>
             <p>
-                Olá paulo
+                Minhas conta
             </p>
         </div>
       </header>

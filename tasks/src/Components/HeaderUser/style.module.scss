@@ -1,0 +1,66 @@
+.container {
+    display: flex;
+    width: 100vw;
+    height: 105px;
+    justify-content: space-between;
+    align-items: center;
+
+    @media(max-width:767px) {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto;
+
+    }
+
+    &__logo {
+        display: flex;
+
+        p {
+            color: white;
+            font-size: 38px;
+            font-weight: bold;
+            padding-left: 128px;
+
+            @media(max-width:767px) {
+                font-size: 24px;
+                width: 80vw;
+                padding-left: 40px;
+            }
+
+            span {
+                color: red;
+            }
+        }
+
+        >button {
+            margin-left: 24px;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 18px;
+        }
+    }
+
+    &__saudation {
+        @media(max-width:767px) {
+            width: 350px;
+        }
+
+        p {
+            color: white;
+            font-size: 18px;
+            border: 1px solid white;
+            padding: 16px 40px;
+            border-radius: 50px;
+            margin-right: 128px;
+
+            @media(max-width:767px) {
+                margin-right: 40px;
+                letter-spacing: 2px;
+                text-align: center;
+                padding: 8px 24px;
+            }
+
+        }
+    }
+}
