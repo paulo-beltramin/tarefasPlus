@@ -1,22 +1,99 @@
 import { GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState, useEffect,} from "react";
+import {
+  addDoc,
+  collection,
+  query,
+  orderBy,
+  where,
+  onSnapshot
+}
+  from 'firebase/firestore'
+
+import { db } from "@/service/db";
 import { MdDelete } from "react-icons/md";
-import { FaShare } from "react-icons/fa";
+import { FiShare2 } from "react-icons/fi";
 
 import styles from './styles.module.scss'
 
+type userProps = {
+  user: {
+    email: string
+  }
+}
 
-export default function Admin() {
+type tasksProps = {
+  id: string,
+  created: Date,
+  user: string,
+  tarefas: string,
+  public: boolean,
+
+}
+
+
+export default function Admin({ user }: userProps) {
 
   const [input, setInput] = useState('')
   const [check, setCheck] = useState(false)
+  const [tasks, setTasks] = useState<tasksProps[]>([])
 
 
   const handlePublic = (e: ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.checked)
     setCheck(e.target.checked)
   }
+
+  const handleRegister = async (e: FormEvent) => {
+    e.preventDefault()
+
+    if (input === '') {
+      return
+    }
+
+    try {
+      await addDoc(collection(db, "tarefas"), {
+        tarefas: input,
+        created: new Date(),
+        user: user?.email,
+        public: check
+      })
+
+      setInput('')
+      setCheck(false)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const getTasks = () => {
+
+    const docRef = collection(db, 'tarefas')
+    const queryRef = query(docRef,
+      orderBy('created', "desc"),
+      where('user', "==", user?.email)
+    )
+
+    onSnapshot(queryRef, (task) => {
+      let list = [] as tasksProps[]
+      task.forEach((doc) => {
+        list.push({
+          tarefas: doc.data().tarefas,
+          public: doc.data().public,
+          user: doc.data().user,
+          created: doc.data().created,
+          id: doc.id
+        })
+        setTasks(list)
+      })
+    })
+
+  }
+
+  useEffect(() => {
+    getTasks()
+  }, [user?.email])
 
   return (
     <>
@@ -26,7 +103,7 @@ export default function Admin() {
 
 
       <section className={styles.container}>
-        <div >
+        <form onSubmit={handleRegister}>
           <h1>
             Qual a sua tarefa ?
           </h1>
@@ -41,7 +118,7 @@ export default function Admin() {
           <button>
             Registrar
           </button>
-        </div>
+        </form>
 
 
       </section>
@@ -51,29 +128,30 @@ export default function Admin() {
           <h2>Minhas tarefas</h2>
 
           <ul>
-            <li>
-              estudar java script
-              <p>
-                <MdDelete size={28} />
-              </p>
-            </li>
+            {tasks.map((item) => (
+              <li key={item.id}>
+                <div>
+                  <span className={styles.container_tasks__list__public}>
+                    {item.public === true ? (
+                      <>
+                        <p>
+                          Publico
+                        </p>
+                        <FiShare2 size={18} color="#3183FF" />
+                      </>
+                    ) : (
+                      <></>
+                    )}
 
-            <li>
-              <div>
-                <span className={styles.container_tasks__list__public}>
-                  <p>
-                    Publico
-                  </p>
 
-                  <FaShare size={18} color="#3183FF" />
-
-                </span>
-                estudar java script
-              </div>
-              <p>
-                <MdDelete size={28} />
-              </p>
-            </li>
+                  </span>
+                  {item.tarefas}
+                </div>
+                <p>
+                  <MdDelete size={28} />
+                </p>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
@@ -96,7 +174,11 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   }
 
   return {
-    props: {}
+    props: {
+      user: {
+        email: session?.user?.email
+      }
+    }
   }
 }
 
