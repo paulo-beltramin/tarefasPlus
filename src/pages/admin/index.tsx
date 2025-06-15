@@ -1,14 +1,22 @@
 import { GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
-
+import { ChangeEvent, useState } from "react";
 import { MdDelete } from "react-icons/md";
 import { FaShare } from "react-icons/fa";
+
 import styles from './styles.module.scss'
 
 
 export default function Admin() {
 
+  const [input, setInput] = useState('')
+  const [check, setCheck] = useState(false)
 
+
+  const handlePublic = (e: ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.checked)
+    setCheck(e.target.checked)
+  }
 
   return (
     <>
@@ -22,10 +30,11 @@ export default function Admin() {
           <h1>
             Qual a sua tarefa ?
           </h1>
-          <textarea placeholder='Digite sua tarefa' required ></textarea>
+          <textarea placeholder='Digite sua tarefa' required
+            value={input} onChange={e => setInput(e.target.value)} ></textarea>
 
           <div className={styles.container__checkbox}>
-            <input type="checkbox" />
+            <input type="checkbox" checked={check} onChange={handlePublic} />
             <label>Deixar tarefa publica</label>
           </div>
 
