@@ -103,6 +103,11 @@ export default function Admin({ user }: userProps) {
   const handleDelete = async (id: string) => {
     const docRef = doc(db, 'tarefas', id)
     await deleteDoc(docRef)
+
+    const DeleteTasks = tasks.filter((item) => item.id !== id)
+
+    setTasks(DeleteTasks)
+
   }
 
 
