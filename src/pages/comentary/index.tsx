@@ -1,9 +1,12 @@
 import { MdDelete } from "react-icons/md"
 
-
 import HeaderUser from "@/Components/HeaderUser"
 import styles from './styles.module.scss'
+
+
 const Comentary = () => {
+
+
   return (
     <>
       <HeaderUser />
@@ -49,8 +52,6 @@ const Comentary = () => {
                 </p>
               </div>
             </li>
-
-
           </ul>
         </section>
       </main>
