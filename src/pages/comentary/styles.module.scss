@@ -2,11 +2,20 @@
     background-color: white;
     height: 100%;
 
+     @media screen and (min-width:319px) and (max-width:1048px){
+        height: 100%;
+     }
+
     &__coment {
         max-width: 1048px;
         width: 100%;
+       
         margin: 0 auto;
         padding-top: 80px;
+
+        @media screen and (min-width:319px) and (max-width:1048px) {
+            width: 90%;
+        }
 
         h2 {
             font-size: 32px;
@@ -24,13 +33,14 @@
         }
 
         &__text {
+       
             textarea {
                 height: 108px;
                 margin-bottom: 24px;
             }
         }
 
-        button{
+        button {
             background-color: #3183FF;
             color: white;
             width: 100%;
@@ -40,49 +50,61 @@
         }
     }
 
-    &__list{
+    &__list {
+       
         padding-top: 60px;
         max-width: 1048px;
         width: 100%;
         margin: 0 auto;
 
-        h2{
+
+        @media screen and (min-width:319px) and (max-width:1048px) {
+            width: 90%;
+        }
+
+
+        h2 {
             font-size: 32px;
             margin-bottom: 24px;
         }
 
-        ul{
+        ul {
             padding-bottom: 40px;
         }
-        
-        li{
+
+        li {
             list-style: none;
             border: 1px solid #909090;
             padding: 12px 16px;
             margin-bottom: 24px;
             border-radius: 8px;
 
-            >p{
+            >p {
                 background-color: #909090;
                 text-align: center;
                 padding: 8px 0;
                 border-radius: 8px;
                 width: 100px;
-                font-weight: bold;   
+                font-weight: bold;
             }
-        
+
         }
 
-        &__li{
+        &__li {
+          
             display: flex;
             justify-content: space-between;
 
-            span{
+            span {
                 width: 80%;
                 margin-top: 8px;
+
+                @media screen and (min-width:319px) and (max-width:1048px) {
+                    width: 90%;
+                }
             }
 
-            p{
+            p {
                 color: red;
             }
         }
