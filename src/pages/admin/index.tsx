@@ -1,13 +1,15 @@
 import { GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
-import { ChangeEvent, FormEvent, useState, useEffect,} from "react";
+import { ChangeEvent, FormEvent, useState, useEffect, } from "react";
 import {
   addDoc,
   collection,
   query,
   orderBy,
   where,
-  onSnapshot
+  onSnapshot,
+  deleteDoc,
+  doc
 }
   from 'firebase/firestore'
 
@@ -16,6 +18,7 @@ import { MdDelete } from "react-icons/md";
 import { FiShare2 } from "react-icons/fi";
 
 import styles from './styles.module.scss'
+import Link from "next/link";
 
 type userProps = {
   user: {
@@ -87,6 +90,7 @@ export default function Admin({ user }: userProps) {
         })
         setTasks(list)
       })
+
     })
 
   }
@@ -94,6 +98,13 @@ export default function Admin({ user }: userProps) {
   useEffect(() => {
     getTasks()
   }, [user?.email])
+
+
+  const handleDelete = async (id: string) => {
+    const docRef = doc(db, 'tarefas', id)
+    await deleteDoc(docRef)
+  }
+
 
   return (
     <>
@@ -142,13 +153,23 @@ export default function Admin({ user }: userProps) {
                     ) : (
                       <></>
                     )}
-
-
                   </span>
-                  {item.tarefas}
+                  {item.public ? (
+
+                    <Link href={`/comentary/${item.id}`}>
+                      <p>
+                        {item.tarefas}
+                      </p>
+                    </Link>
+
+                  ) : (
+                    <p>
+                      {item.tarefas}
+                    </p>
+                  )}
                 </div>
                 <p>
-                  <MdDelete size={28} />
+                  <MdDelete size={28} onClick={() => handleDelete(item.id)} />
                 </p>
               </li>
             ))}

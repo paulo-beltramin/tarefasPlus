@@ -99,6 +99,15 @@
                     color: red;
                     cursor: pointer;
                 }
+
+                a{
+                    color: black;
+                    text-decoration: none;
+
+                    :hover{
+                        color: #006400;
+                    }
+                }
             }
 
         }

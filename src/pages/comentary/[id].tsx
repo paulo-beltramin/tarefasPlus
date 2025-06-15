@@ -1,6 +1,5 @@
 import { MdDelete } from "react-icons/md"
 
-
 import styles from './styles.module.scss'
 
 
@@ -9,7 +8,7 @@ const Comentary = () => {
 
   return (
     <>
-     
+
       <main className={styles.container}>
 
         <section className={styles.container__coment}>
