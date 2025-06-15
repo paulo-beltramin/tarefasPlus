@@ -19,12 +19,17 @@
             }
 
             button {
-                background-color: white;
-                color: black;
-                font-size: 16px;
-                padding: 8px 12px;
                 margin-left: 24px;
                 margin-top: 8px;
+
+                a {
+                    background-color: white;
+                    color: black;
+                    font-size: 16px;
+                    padding: 8px 12px;
+                    text-decoration: none;
+
+                }
 
                 @media(min-width:319px) and (max-width:1048px) {
                     margin-left: 30px;
@@ -63,6 +68,8 @@
             padding: 16px 40px;
             border-radius: 50px;
             margin-right: 128px;
+            cursor: pointer;
+            
 
             @media(min-width:319px) and (max-width:1048px) {
                 margin-right: 40px;

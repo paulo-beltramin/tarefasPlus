@@ -1,4 +1,4 @@
-import Header from "@/Components/Header";
+
 import logo from '../../public/logo_tasks.png'
 import Image from "next/image";
 import styles from '@/styles/Home.module.scss'
@@ -6,7 +6,11 @@ import styles from '@/styles/Home.module.scss'
 export default function Home() {
   return (
     <>
-      <Header/>
+   
+
+      <head>
+        <title>Home</title>
+      </head>
 
       <main className={styles.container}>
             <Image
