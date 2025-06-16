@@ -44,7 +44,7 @@ export default function Admin({ user }: userProps) {
 
 
   const handlePublic = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.checked)
+
     setCheck(e.target.checked)
   }
 
@@ -97,7 +97,7 @@ export default function Admin({ user }: userProps) {
 
   useEffect(() => {
     getTasks()
-  }, [user?.email])
+  }, [])
 
 
   const handleDelete = async (id: string) => {

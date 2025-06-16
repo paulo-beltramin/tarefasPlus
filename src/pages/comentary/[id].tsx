@@ -49,6 +49,10 @@ const Comentary = ({ item, list }: taskProps) => {
   const handleComment = async (e: FormEvent) => {
     e.preventDefault()
 
+    if(input === ''){
+      return 
+    }
+
     if (!session?.user?.email || !session?.user?.name) {
       return;
     }
@@ -98,7 +102,9 @@ const Comentary = ({ item, list }: taskProps) => {
 
   return (
     <>
-
+      <head>
+        <title>Detalhes da tarefa</title>
+      </head>
       <main className={styles.container}>
 
         <form className={styles.container__coment} onSubmit={handleComment}>

@@ -4,8 +4,6 @@ import Link from 'next/link'
 import styles from './style.module.scss'
 
 
-
-
 const HeaderUser = () => {
 
     const { data: session, status } = useSession()
@@ -17,15 +15,19 @@ const HeaderUser = () => {
                     <div className={styles.container__logo__items}>
 
                         <p>
-                            Tarefas <span>+</span>
+                            <Link href={'/'}>
+                                Tarefas 
+                            </Link>
+
+                            <span>+</span>
                         </p>
 
-                        {session && (
-                            <button >
-                                <Link href={'/admin'}>
+                        {session?.user?.email && (
+                            <Link href={'/admin'}>
+                                <button >
                                     Meu painel
-                                </Link>
-                            </button>
+                                </button>
+                            </Link>
                         )}
 
                     </div>

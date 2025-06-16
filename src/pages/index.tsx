@@ -6,20 +6,16 @@ import Image from "next/image";
 import styles from '@/styles/Home.module.scss'
 import { GetStaticProps } from 'next';
 
+
 type HomeProps = {
   task: number,
-  coment: number
-
+  coment: number,
 }
 
 export default function Home({ task, coment }: HomeProps) {
 
-
-
   return (
     <>
-
-
       <head>
         <title>Home</title>
       </head>
@@ -47,6 +43,7 @@ export default function Home({ task, coment }: HomeProps) {
 
 export const getStaticProps: GetStaticProps = async () => {
 
+
   const taskRef = collection(db, 'tarefas')
   const comentsRef = collection(db, 'comments')
 
@@ -58,6 +55,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       task: posts.size || 0,
       coment: coment.size || 0,
+
     }
   }
 }
